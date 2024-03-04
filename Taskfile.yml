@@ -1,0 +1,6 @@
+version: '3'
+
+tasks:
+  build-push:
+    cmds:
+      - GITHUB_BUILD_TOKEN=$GITHUB_API_KEY make

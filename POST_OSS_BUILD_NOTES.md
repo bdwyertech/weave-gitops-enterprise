@@ -32,7 +32,7 @@ terribly well in local development.
 
 Most of the changes in this repo revolved around the Makefile. If the existing
 weaveworks process does not work for you, try merging this commit from my fork
-<https://github.com/mproffitt/progressive-delivery/commit/cae82590e7c2dae62971e001056f010f1a974dab>
+<https://github.com/bdwyertech/progressive-delivery/commit/cae82590e7c2dae62971e001056f010f1a974dab>
 
 You will need the `envsubst` command for this commit to work. If you're on mac
 and this command cannot be found, try `brew install envsubst`.
@@ -81,7 +81,7 @@ libraries above to.
 
 ```sh
 cd ui
-for file in $(grep -r '@weaveworks' | awk -F: '{print $1}'); do sed -i 's/@weaveworks/@mproffitt/g' $file; done
+for file in $(grep -r '@weaveworks' | awk -F: '{print $1}'); do sed -i 's/@weaveworks/@bdwyertech/g' $file; done
 cd ..
 ```
 
@@ -105,7 +105,7 @@ but setting it to be `time.Now().AddDate(1, 0, 0)` (now + 1 year).
 If you're following these instructions and [#PR-3752](https://github.com/weaveworks/weave-gitops-enterprise/pull/3752)
 has not been merged, you need to merge the following branch:
 
-<https://github.com/mproffitt/weave-gitops-enterprise/tree/remove-entitlement>
+<https://github.com/bdwyertech/weave-gitops-enterprise/tree/remove-entitlement>
 
 ### Docker UI fix
 
@@ -127,7 +127,7 @@ COPY --from=build --chown=1000:1000 /home/node/build /html
 ```
 
 We also need to update the chart to add a security context. As a convenience
-this can be found on on my fork at this commit: [909ffa2](https://github.com/mproffitt/weave-gitops-enterprise/commit/909ffa27e2a302fca51246637d8b46d36ec34aa6)
+this can be found on on my fork at this commit: [909ffa2](https://github.com/bdwyertech/weave-gitops-enterprise/commit/909ffa27e2a302fca51246637d8b46d36ec34aa6)
 
 ### Building images
 
@@ -140,7 +140,7 @@ make
 ```
 
 The Makefile didn't seem to publish both images correctly so this has been
-"corrected" in commit [e34fdf5](https://github.com/mproffitt/weave-gitops-enterprise/commit/e34fdf5d486795cea98ef13187ab379d593c5676)
+"corrected" in commit [e34fdf5](https://github.com/bdwyertech/weave-gitops-enterprise/commit/e34fdf5d486795cea98ef13187ab379d593c5676)
 
 ### charts
 
@@ -202,7 +202,7 @@ For example:
 
 ```Makefile
 IMG_REGISTRY ?= docker.io
-IMG ?= $(IMG_REGISTRY)/choclab/pipeline-controller:$(IMG_TAG)
+IMG ?= $(IMG_REGISTRY)/bdwyertech/pipeline-controller:$(IMG_TAG)
 ```
 
 Edit the push command to remove either the `arm64` or `amd64` directive as
@@ -226,7 +226,7 @@ make docker-push
 Edit the `Makefile` and set the `IMG` to your registry
 
 ```Makefile
-IMG ?= docker.io/choclab/cluster-reflector-controller:${VERSION}
+IMG ?= docker.io/bdwyertech/cluster-reflector-controller:${VERSION}
 ```
 
 Next build and push the image
@@ -247,7 +247,7 @@ make helm
 Edit the `Makefile` and set the `IMAGE_TAG_BASE` to your registry
 
 ```Makefile
-IMAGE_TAG_BASE ?= docker.io/choclab/cluster-bootstrap-controller
+IMAGE_TAG_BASE ?= docker.io/bdwyertech/cluster-bootstrap-controller
 ```
 
 Next build and push the image

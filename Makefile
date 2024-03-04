@@ -4,7 +4,7 @@
 # Boiler plate for bulding Docker containers.
 # All this must go at top of file I'm afraid.
 BUILD_TIME?=$(shell date +'%Y-%m-%d_%T')
-IMAGE_PREFIX := docker.io/choclab/weave-gitops-enterprise-
+IMAGE_PREFIX := docker.io/bdwyertech/weave-gitops-enterprise-
 IMAGE_TAG := $(shell tools/image-tag)
 GIT_REVISION := $(shell git rev-parse HEAD)
 CORE_REVISION := $(shell grep 'weaveworks/weave-gitops ' $(PWD)/go.mod | cut -d' ' -f2 | cut -d '-' -f3)
@@ -76,8 +76,8 @@ ui/.uptodate: ui/*
 	touch $@
 
 update-mccp-chart-values:
-	sed -i "s|clustersService: docker.io/weaveworks/weave-gitops-enterprise-clusters-service.*|clustersService: docker.io/choclab/weave-gitops-enterprise-clusters-service:$(IMAGE_TAG)|" $(CHART_VALUES_PATH)
-	sed -i "s|uiServer: docker.io/weaveworks/weave-gitops-enterprise-ui-server.*|uiServer: docker.io/choclab/weave-gitops-enterprise-ui-server:$(IMAGE_TAG)|" $(CHART_VALUES_PATH)
+	sed -i "s|clustersService: docker.io/weaveworks/weave-gitops-enterprise-clusters-service.*|clustersService: docker.io/bdwyertech/weave-gitops-enterprise-clusters-service:$(IMAGE_TAG)|" $(CHART_VALUES_PATH)
+	sed -i "s|uiServer: docker.io/weaveworks/weave-gitops-enterprise-ui-server.*|uiServer: docker.io/bdwyertech/weave-gitops-enterprise-ui-server:$(IMAGE_TAG)|" $(CHART_VALUES_PATH)
 
 # Get a list of directories containing Dockerfiles
 DOCKERFILES := $(shell find . \
