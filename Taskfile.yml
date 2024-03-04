@@ -3,4 +3,5 @@ version: '3'
 tasks:
   build-push:
     cmds:
+      - rm -f cmd/clusters-service/.uptodate ui/.uptodate
       - GITHUB_BUILD_TOKEN=$GITHUB_API_KEY make

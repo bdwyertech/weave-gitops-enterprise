@@ -18,33 +18,33 @@ version: 0.3.2
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "1.16.0"
+appVersion: '1.16.0'
 dependencies:
   - name: cluster-controller
-    version: "1.0.0"
-    repository: "file://../cluster-controller"
+    version: '1.0.0'
+    repository: 'file://../cluster-controller'
     condition: cluster-controller.enabled
   - name: templates-controller
-    version: "0.3.0"
-    repository: "file://../templates-controller"
+    version: '0.3.0'
+    repository: 'file://../templates-controller'
     condition: templates-controller.enabled
   - name: policy-agent
-    version: "2.5.0"
-    repository: "https://weaveworks.github.io/policy-agent"
+    version: '2.5.0'
+    repository: 'https://weaveworks.github.io/policy-agent'
     condition: policy-agent.enabled
   - name: pipeline-controller
-    version: "0.22.0"
-    repository: file://../../../pipeline-controller/charts/pipeline-controller
+    version: '0.22.0'
+    repository: 'oci://ghcr.io/bdwyertech/weave-gitops-enterprise'
     condition: enablePipelines
   - name: gitopssets-controller
-    version: "0.1.0"
+    version: '0.1.0'
     repository: file://../gitopssets-controller
     condition: gitopssets-controller.enabled
   - name: cluster-reflector-controller
-    version: "0.1.0"
-    repository: file://../../../cluster-reflector-controller/charts/cluster-reflector-controller
+    version: 'v0.31.2-bdwyertech'
+    repository: 'oci://ghcr.io/bdwyertech/weave-gitops-enterprise'
     condition: cluster-reflector-controller.enabled
   - name: cluster-bootstrap-controller
-    version: "0.1.0"
-    repository: file://../../../cluster-bootstrap-controller/charts/cluster-bootstrap-controller
+    version: '0.1.0'
+    repository: 'oci://ghcr.io/bdwyertech/weave-gitops-enterprise'
     condition: cluster-bootstrap-controller.enabled

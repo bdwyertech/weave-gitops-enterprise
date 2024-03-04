@@ -9,16 +9,16 @@ dependencies:
   repository: https://weaveworks.github.io/policy-agent
   version: 2.5.0
 - name: pipeline-controller
-  repository: file://../../../pipeline-controller/charts/pipeline-controller
+  repository: oci://ghcr.io/bdwyertech/weave-gitops-enterprise
   version: 0.22.0
 - name: gitopssets-controller
   repository: file://../gitopssets-controller
   version: 0.1.0
 - name: cluster-reflector-controller
-  repository: file://../../../cluster-reflector-controller/charts/cluster-reflector-controller
-  version: 0.1.0
+  repository: oci://ghcr.io/bdwyertech/weave-gitops-enterprise
+  version: v0.31.2-bdwyertech
 - name: cluster-bootstrap-controller
-  repository: file://../../../cluster-bootstrap-controller/charts/cluster-bootstrap-controller
+  repository: oci://ghcr.io/bdwyertech/weave-gitops-enterprise
   version: 0.1.0
-digest: sha256:4c81bb2c460eec3140022ee742fcafe7058f4c05615094dbebf07b321a14b718
-generated: "2024-02-23T18:44:15.045997757+01:00"
+digest: sha256:f57ec773307dc4233a9e95936afd6de1e2a3fbc4eec6b13edf82e34d069b63d9
+generated: "2024-03-04T11:52:31.49972-05:00"
