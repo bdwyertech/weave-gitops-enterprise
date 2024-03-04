@@ -45,6 +45,7 @@ dependencies:
     repository: 'oci://ghcr.io/bdwyertech/weave-gitops-enterprise'
     condition: cluster-reflector-controller.enabled
   - name: cluster-bootstrap-controller
+    alias: cbc
     version: '0.1.0'
     repository: 'oci://ghcr.io/bdwyertech/weave-gitops-enterprise'
     condition: cluster-bootstrap-controller.enabled

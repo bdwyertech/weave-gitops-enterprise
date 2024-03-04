@@ -20,5 +20,5 @@ dependencies:
 - name: cluster-bootstrap-controller
   repository: oci://ghcr.io/bdwyertech/weave-gitops-enterprise
   version: 0.1.0
-digest: sha256:f57ec773307dc4233a9e95936afd6de1e2a3fbc4eec6b13edf82e34d069b63d9
-generated: "2024-03-04T11:52:31.49972-05:00"
+digest: sha256:74cb6907330b3d320a33e348ee84cfd3a04b88808429fbefe174ba7c6e24fa16
+generated: "2024-03-04T12:20:09.878245-05:00"
