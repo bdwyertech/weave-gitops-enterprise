@@ -17,8 +17,10 @@ kind: Ingress
 metadata:
   name: {{ include "mccp.fullname" . }}-ingress
   labels:
-    {{- toYaml .Values.ingress.labels | nindent 4 }}
     {{- include "mccp.labels" . | nindent 4 }}
+    {{- with .Values.ingress.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
