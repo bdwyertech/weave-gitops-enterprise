@@ -19,4 +19,4 @@ tasks:
       LDFLAGS:
         sh: make echo-ldflags
     cmds:
-      - GITLAB_TOKEN='' goreleaser --snapshot --clean
+      - GITLAB_TOKEN='' goreleaser --clean

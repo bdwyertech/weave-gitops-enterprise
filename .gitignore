@@ -83,3 +83,5 @@ __pycache__
 *.bolt
 
 .parcel-cache
+
+.brcp-k8s.yml
