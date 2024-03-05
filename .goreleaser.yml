@@ -7,7 +7,7 @@ before:
   hooks:
     - go mod tidy
 checksum:
-  name_template: "{{ .ProjectName }}_checksums.txt"
+  name_template: '{{ .ProjectName }}_checksums.txt'
 archives:
   - format: tar.gz
     name_template: >-
@@ -17,10 +17,13 @@ archives:
       {{- else }}{{ .Arch }}{{ end }}
 builds:
   - <<: &build_defaults
-      binary: "gitops"
+      binary: 'gitops'
       main: ./cmd/gitops
+      flags:
+        - -trimpath
       ldflags:
-        - "{{ .Env.LDFLAGS }}"
+        - -s -w
+        - '{{ .Env.LDFLAGS }}'
       env:
         - CGO_ENABLED=0
     id: linux-amd64
@@ -67,9 +70,9 @@ brews:
       name: weave-gitops-bot
       email: weave-gitops-bot@weave.works
     folder: Formula
-    url_template: "https://artifacts.wge.dev.weave.works/releases/bin/{{ .Version }}/{{ .ArtifactName }}"
-    homepage: "https://docs.gitops.weave.works/docs/getting-started"
-    description: "GitOps support for Kubernetes"
+    url_template: 'https://artifacts.wge.dev.weave.works/releases/bin/{{ .Version }}/{{ .ArtifactName }}'
+    homepage: 'https://bdwyertech.net/weave-gitops/docs/getting-started'
+    description: 'GitOps support for Kubernetes'
     install: |
       bin.install "gitops"
       # Install bash completion
@@ -82,5 +85,5 @@ brews:
 blobs:
   - provider: s3
     bucket: weave-gitops-enterprise
-    folder: "releases/bin/{{.Version}}"
-    region: "us-east-1"
+    folder: 'releases/bin/{{.Version}}'
+    region: 'us-east-1'

@@ -5,3 +5,18 @@ tasks:
     cmds:
       - rm -f cmd/clusters-service/.uptodate ui/.uptodate
       - GITHUB_BUILD_TOKEN=$GITHUB_API_KEY make
+  push-charts:
+    dir: charts
+    cmds:
+      - helm package templates-controller
+      - helm push templates-controller-0.3.0.tgz oci://ghcr.io/bdwyertech/weave-gitops-enterprise
+      - helm package cluster-bootstrap-controller
+      - helm push cluster-bootstrap-controller-0.1.0.tgz oci://ghcr.io/bdwyertech/weave-gitops-enterprise
+      - helm package gitopssets-controller
+      - helm push gitopssets-controller-0.1.0.tgz oci://ghcr.io/bdwyertech/weave-gitops-enterprise
+  build-cli:
+    env:
+      LDFLAGS:
+        sh: make echo-ldflags
+    cmds:
+      - GITLAB_TOKEN='' goreleaser --snapshot --clean
