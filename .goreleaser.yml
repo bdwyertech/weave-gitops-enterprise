@@ -1,6 +1,6 @@
 project_name: gitops-ee
-release:
-  disable: true
+# release:
+#   disable: true
 env:
   - GO111MODULE=on
 before:
