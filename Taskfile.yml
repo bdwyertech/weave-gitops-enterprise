@@ -14,6 +14,8 @@ tasks:
       - helm push cluster-bootstrap-controller-0.1.0.tgz oci://ghcr.io/bdwyertech/weave-gitops-enterprise
       - helm package gitopssets-controller
       - helm push gitopssets-controller-0.1.0.tgz oci://ghcr.io/bdwyertech/weave-gitops-enterprise
+      - helm package mccp
+      - helm push mccp-0.3.2.tgz oci://ghcr.io/bdwyertech/weave-gitops-enterprise
   build-cli:
     env:
       LDFLAGS:
