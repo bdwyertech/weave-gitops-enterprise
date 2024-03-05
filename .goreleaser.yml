@@ -9,12 +9,12 @@ before:
 checksum:
   name_template: '{{ .ProjectName }}_checksums.txt'
 archives:
-  - format: tar.gz
-    name_template: >-
-      gitops-
-      {{- title .Os }}-
-      {{- if eq .Arch "amd64" }}x86_64
-      {{- else }}{{ .Arch }}{{ end }}
+  - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - ONLY_BINARY*
 builds:
   - <<: &build_defaults
       binary: 'gitops'
@@ -61,29 +61,9 @@ builds:
       - darwin
     goarch:
       - arm64
-brews:
-  - name: gitops-ee
-    tap:
-      owner: weaveworks
-      name: homebrew-tap
-    commit_author:
-      name: weave-gitops-bot
-      email: weave-gitops-bot@weave.works
-    folder: Formula
-    url_template: 'https://artifacts.wge.dev.weave.works/releases/bin/{{ .Version }}/{{ .ArtifactName }}'
-    homepage: 'https://bdwyertech.net/weave-gitops/docs/getting-started'
-    description: 'GitOps support for Kubernetes'
-    install: |
-      bin.install "gitops"
-      # Install bash completion
-      output = Utils.popen_read("#{bin}/gitops completion bash")
-      (bash_completion/"gitops").write output
-
-      # Install zsh completion
-      output = Utils.popen_read("#{bin}/gitops completion zsh")
-      (zsh_completion/"_gitops").write output
-blobs:
-  - provider: s3
-    bucket: weave-gitops-enterprise
-    folder: 'releases/bin/{{.Version}}'
-    region: 'us-east-1'
+  - <<: *build_defaults
+    id: windows-amd64
+    goos:
+      - windows
+    goarch:
+      - amd64
