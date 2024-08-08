@@ -6,10 +6,17 @@ import (
 	"os"
 	"time"
 
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+
 	"github.com/weaveworks/weave-gitops-enterprise/cmd/clusters-service/app"
 )
 
 func main() {
+	tracer.Start(
+		// tracer.WithEnv("prod"),
+		tracer.WithService("gitops-clusters"),
+		// tracer.WithServiceVersion("abc123"),
+	)
 	rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	tempDir, err := os.MkdirTemp("", "*")
@@ -18,6 +25,7 @@ func main() {
 	}
 	defer func() {
 		_ = os.RemoveAll(tempDir)
+		tracer.Stop()
 	}()
 
 	command := app.NewAPIServerCommand()
