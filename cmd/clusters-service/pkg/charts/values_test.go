@@ -465,7 +465,7 @@ func makeTestHelmRelease(name, repoName, repoNS, chart, version string, opts ...
 			Kind:       helmv2.HelmReleaseKind,
 		},
 		Spec: helmv2.HelmReleaseSpec{
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart:   chart,
 					Version: version,

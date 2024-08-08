@@ -23,7 +23,7 @@ func TestCreateHelmReleaseYamlString(t *testing.T) {
 			Namespace: "test-ns",
 		},
 		Spec: helmv2.HelmReleaseSpec{
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart:             "test-chart",
 					ReconcileStrategy: sourcev1beta2.ReconcileStrategyChartVersion,
@@ -150,7 +150,7 @@ func TestGetHelmReleaseProperty(t *testing.T) {
 			Name:      "wego",
 			Namespace: "flux-system",
 		}, Spec: helmv2.HelmReleaseSpec{
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart:             "test-chart",
 					ReconcileStrategy: sourcev1beta2.ReconcileStrategyChartVersion,
@@ -264,7 +264,7 @@ func TestGetHelmReleaseValues(t *testing.T) {
 			Name:      "wego",
 			Namespace: "flux-system",
 		}, Spec: helmv2.HelmReleaseSpec{
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart:             "test-chart",
 					ReconcileStrategy: sourcev1beta2.ReconcileStrategyChartVersion,

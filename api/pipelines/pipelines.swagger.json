@@ -78,18 +78,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "namespace": {
-                  "type": "string"
-                },
-                "env": {
-                  "type": "string"
-                },
-                "revision": {
-                  "type": "string"
-                }
-              }
+              "$ref": "#/definitions/PipelinesApprovePromotionBody"
             }
           }
         ],
@@ -128,12 +117,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "namespace": {
-                  "type": "string"
-                }
-              }
+              "$ref": "#/definitions/PipelinesListPullRequestsBody"
             }
           }
         ],
@@ -193,6 +177,28 @@
             "type": "object",
             "$ref": "#/definitions/v1PipelineTargetStatus"
           }
+        }
+      }
+    },
+    "PipelinesApprovePromotionBody": {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        }
+      }
+    },
+    "PipelinesListPullRequestsBody": {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "type": "string"
         }
       }
     },

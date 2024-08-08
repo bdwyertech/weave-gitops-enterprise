@@ -37,7 +37,7 @@ func CreateHelmReleaseYamlString(hr helmv2.HelmRelease) (string, error) {
 			Name:      hr.Name,
 			Namespace: hr.Namespace,
 		}, Spec: helmv2.HelmReleaseSpec{
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart:             hr.Spec.Chart.Spec.Chart,
 					ReconcileStrategy: sourcev1.ReconcileStrategyChartVersion,

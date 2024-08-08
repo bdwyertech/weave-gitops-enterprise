@@ -48,13 +48,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "accessToken": {
-                  "type": "string",
-                  "title": "The token of the git provider"
-                }
-              }
+              "$ref": "#/definitions/GitAuthAuthenticateBody"
             }
           }
         ],
@@ -387,6 +381,15 @@
     }
   },
   "definitions": {
+    "GitAuthAuthenticateBody": {
+      "type": "object",
+      "properties": {
+        "accessToken": {
+          "type": "string",
+          "title": "The token of the git provider"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {

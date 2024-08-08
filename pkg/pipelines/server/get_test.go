@@ -303,7 +303,7 @@ func createHelmRelease(ctx context.Context, t *testing.T, k client.Client, name 
 			Namespace: ns,
 		},
 		Spec: helm.HelmReleaseSpec{
-			Chart: helm.HelmChartTemplate{
+			Chart: &helm.HelmChartTemplate{
 				Spec: helm.HelmChartTemplateSpec{
 					Version: "0.1.2",
 				},

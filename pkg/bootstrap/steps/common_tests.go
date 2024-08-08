@@ -112,7 +112,7 @@ func createWGEHelmReleaseFakeObject(version string) (helmv2.HelmRelease, error) 
 			Name:      WgeHelmReleaseName,
 			Namespace: WGEDefaultNamespace,
 		}, Spec: helmv2.HelmReleaseSpec{
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart:             wgeChartName,
 					ReconcileStrategy: sourcev1beta2.ReconcileStrategyChartVersion,

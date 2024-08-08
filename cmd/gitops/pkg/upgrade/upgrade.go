@@ -237,7 +237,7 @@ func makeHelmResources(namespace, version, clusterName, repoURL string, values [
 		},
 		Spec: helmv2.HelmReleaseSpec{
 			Interval: metav1.Duration{Duration: time.Minute},
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart: "mccp",
 					SourceRef: helmv2.CrossNamespaceObjectReference{

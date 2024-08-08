@@ -225,7 +225,7 @@ func MakeHelmReleasesInLayers(namespace string, installs []ChartInstall) ([]*hel
 					Kind:       helmv2.HelmReleaseKind,
 				},
 				Spec: helmv2.HelmReleaseSpec{
-					Chart: helmv2.HelmChartTemplate{
+					Chart: &helmv2.HelmChartTemplate{
 						Spec: helmv2.HelmChartTemplateSpec{
 							Chart:   install.Ref.Chart,
 							Version: install.Ref.Version,

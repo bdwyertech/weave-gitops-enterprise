@@ -145,12 +145,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "clusterName": {
-                  "type": "string"
-                }
-              }
+              "$ref": "#/definitions/TerraformReplanTerraformObjectBody"
             }
           }
         ],
@@ -277,6 +272,14 @@
     }
   },
   "definitions": {
+    "TerraformReplanTerraformObjectBody": {
+      "type": "object",
+      "properties": {
+        "clusterName": {
+          "type": "string"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {

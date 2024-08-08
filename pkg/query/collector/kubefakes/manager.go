@@ -104,6 +104,11 @@ func (f fakeControllerManager) GetHTTPClient() *http.Client {
 	return http.DefaultClient
 }
 
+func (f fakeControllerManager) AddMetricsServerExtraHandler(path string, handler http.Handler) error {
+	//TODO implement me
+	panic("implement me")
+}
+
 func NewControllerManager(config *rest.Config, options ctrl.Options) (ctrl.Manager, error) {
 	options.Logger.Info("created fake watcher")
 	return fakeControllerManager{log: options.Logger, scheme: options.Scheme}, nil

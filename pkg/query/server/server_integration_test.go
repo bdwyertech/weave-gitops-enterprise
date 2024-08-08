@@ -344,7 +344,7 @@ func podinfoHelmRelease(defaultNamespace string) *helmv2.HelmRelease {
 		},
 		Spec: helmv2.HelmReleaseSpec{
 			Interval: metav1.Duration{Duration: time.Minute},
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart: "podinfo",
 					SourceRef: helmv2.CrossNamespaceObjectReference{

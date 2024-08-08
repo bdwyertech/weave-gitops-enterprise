@@ -76,7 +76,7 @@ func TestCreateOIDCConfig(t *testing.T) {
 			Namespace: "flux-system",
 		},
 		Spec: helmv2.HelmReleaseSpec{
-			Chart: helmv2.HelmChartTemplate{
+			Chart: &helmv2.HelmChartTemplate{
 				Spec: helmv2.HelmChartTemplateSpec{
 					Chart:   "mccp",
 					Version: ">= 0.0.0-0",
