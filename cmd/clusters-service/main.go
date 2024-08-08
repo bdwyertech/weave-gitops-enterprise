@@ -13,6 +13,7 @@ import (
 
 func main() {
 	tracer.Start(
+		tracer.WithRuntimeMetrics(),
 		// tracer.WithEnv("prod"),
 		tracer.WithService("gitops-clusters"),
 		// tracer.WithServiceVersion("abc123"),
