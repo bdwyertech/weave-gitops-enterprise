@@ -12,6 +12,7 @@ import (
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 	"k8s.io/client-go/rest"
 	ctrl "sigs.k8s.io/controller-runtime"
+	ctrlmetrics "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 
 	"github.com/weaveworks/weave-gitops-enterprise/pkg/helm"
 	"github.com/weaveworks/weave-gitops-enterprise/pkg/helm/multiwatcher/controller"
@@ -78,10 +79,12 @@ func (w *Watcher) StartWatcher(ctx context.Context, log logr.Logger) error {
 		return err
 	}
 	mgr, err := ctrl.NewManager(cfg, ctrl.Options{
-		Scheme:             w.scheme,
-		Logger:             w.log,
-		LeaderElection:     false,
-		MetricsBindAddress: "0",
+		Scheme:         w.scheme,
+		Logger:         w.log,
+		LeaderElection: false,
+		Metrics: ctrlmetrics.Options{
+			BindAddress: "0",
+		},
 	})
 	if err != nil {
 		w.log.Error(err, "unable to create manager")

@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1.3
 
-FROM golang:1.20 AS build
+FROM golang:1.22 AS build
 
 WORKDIR /app
 COPY Makefile /app/
@@ -21,7 +21,7 @@ ARG image_tag
 RUN --mount=type=cache,target=/root/.cache/go-build \
       make cmd/clusters-service/clusters-service WEAVE_GITOPS_VERSION=${version} IMAGE_TAG=${image_tag}
 
-FROM alpine:3.18
+FROM alpine:3.20
 
 ARG now
 ARG revision
@@ -40,11 +40,11 @@ COPY --from=build /app/cmd/clusters-service/clusters-service .
 
 
 RUN apk --no-cache add ca-certificates tini \
-    # gpg is needed for sops encryption and decryption
-    gnupg \
-    # upgrade openssl to get latest security patches
-    && apk upgrade libssl3 libcrypto3 \
-    && update-ca-certificates
+      # gpg is needed for sops encryption and decryption
+      gnupg \
+      # upgrade openssl to get latest security patches
+      && apk upgrade libssl3 libcrypto3 \
+      && update-ca-certificates
 
 ENV GNUPGHOME=/tmp/
 

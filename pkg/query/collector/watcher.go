@@ -14,6 +14,7 @@ import (
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 	"k8s.io/client-go/rest"
 	ctrl "sigs.k8s.io/controller-runtime"
+	ctrlmetrics "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 )
 
 func NewWatcher(clusterName string, cfg *rest.Config, kinds []configuration.ObjectKind, objectChannel chan []models.ObjectTransaction, log logr.Logger) (manager.Manager, error) {
@@ -25,10 +26,12 @@ func NewWatcher(clusterName string, cfg *rest.Config, kinds []configuration.Obje
 	}
 
 	mgr, err := ctrl.NewManager(cfg, ctrl.Options{
-		Scheme:             scheme,
-		Logger:             log,
-		LeaderElection:     false,
-		MetricsBindAddress: "0",
+		Scheme:         scheme,
+		Logger:         log,
+		LeaderElection: false,
+		Metrics: ctrlmetrics.Options{
+			BindAddress: "0",
+		},
 	})
 	if err != nil {
 		return nil, fmt.Errorf("cannot create controller manager: %w", err)
