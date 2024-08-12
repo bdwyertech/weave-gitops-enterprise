@@ -36,6 +36,7 @@ type gitopsClusterFetcher struct {
 }
 
 func NewGitopsClusterFetcher(log logr.Logger, managementCluster mngrcluster.Cluster, namespace string, scheme *runtime.Scheme, isDelegating bool, userPrefixes kube.UserPrefixes, kubeConfigOptions ...mngrcluster.KubeConfigOption) mngr.ClusterFetcher {
+	gitopsv1alpha1.AddToScheme(scheme)
 	return gitopsClusterFetcher{
 		log:               log.WithName("gitops-cluster-fetcher"),
 		cluster:           managementCluster,
