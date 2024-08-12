@@ -53,9 +53,6 @@ func NewWatcher(clusterName string, cfg *rest.Config, kinds []configuration.Obje
 			return nil, fmt.Errorf("cannot setup reconciler: %w", err)
 		}
 	}
-	if err != nil {
-		return nil, fmt.Errorf("cannot setup reconciler: %w", err)
-	}
 
 	return mgr, nil
 }
